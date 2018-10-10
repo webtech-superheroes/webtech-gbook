@@ -1,0 +1,23 @@
+{
+  "name": "webtech-gbook",
+  "version": "1.0.0",
+  "description": "Decentralized social network using git",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eduardbudacu/webtech-gbook.git"
+  },
+  "author": "eduard.budacu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/eduardbudacu/webtech-gbook/issues"
+  },
+  "homepage": "https://github.com/eduardbudacu/webtech-gbook#readme",
+  "dependencies": {
+    "express": "^4.16.3",
+    "git-clone": "^0.1.0"
+  }
+}
