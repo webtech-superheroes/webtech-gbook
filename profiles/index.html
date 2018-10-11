@@ -4,6 +4,19 @@
         <title>WebTech Superheroes</title>
     </head>
     <body>
-        <p>Hello world!</p>
+        <h1>Sign up</h1>
+        <form action="/signup" method="POST">
+            <label for="name">
+            Name: <br/>
+            <input type="text" name="name" />
+            </label> 
+            <br/>
+            <br/>
+            <label for="giturl">
+            Git profile repository url: <br/> 
+            <input type="text" name="giturl" />
+            </label> 
+            <input type="submit" value="Submit"/>
+        </form>
     </body>
 </html>

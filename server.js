@@ -4,11 +4,25 @@ const fs = require('fs');
 
 const app = express()
 
+/**
+ * configure express to serve static files in the profiles directory
+ * @see https://expressjs.com/en/starter/static-files.html
+ * */
 app.use('/', express.static('profiles'));
-
+ 
+/**
+ * express middleware to parse json and urlencoded request body
+ * @see https://expressjs.com/en/4x/api.html#express-json-middleware
+ * */
 app.use(express.json());
 app.use(express.urlencoded());
 
+
+/**
+ * endpoint POST /signup
+ * @param name - full name of the person who signs up
+ * @param giturl - address for the git repository where the profile is store
+ * */
 app.post('/signup', (request, response) => {
     let repoParts = request.body.giturl.split('/');
     let profilePath = 'profiles/users/'+repoParts[repoParts.length - 2];
@@ -20,7 +34,9 @@ app.post('/signup', (request, response) => {
     clone(request.body.giturl, profilePath, () => {
         console.log('cloned')
     })
-    response.status(200).send(request.body.giturl)
+    
+    let profileAddress = '/users/'+repoParts[repoParts.length - 2];
+    response.status(200).send('Success! You can see your profile <a href="'+profileAddress+'">here</a>');
 })
 
 
