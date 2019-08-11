@@ -17,6 +17,9 @@ app.use('/', express.static('profiles'));
 app.use(express.json());
 app.use(express.urlencoded());
 
+app.get('/ping', (req, res) => {
+    res.status(200).send('hello eduard')
+})
 
 /**
  * endpoint POST /signup
@@ -30,7 +33,7 @@ app.post('/signup', (request, response) => {
     if (!fs.existsSync(profilePath)){
         fs.mkdirSync(profilePath);
     }
-    
+    console.log("show")
     clone(request.body.giturl, profilePath, () => {
         console.log('cloned')
     })
@@ -39,5 +42,5 @@ app.post('/signup', (request, response) => {
     response.status(200).send('Success! You can see your profile <a href="'+profileAddress+'">here</a>');
 })
 
-
-app.listen(8080);
+const port = process.env.PORT || 8080;
+app.listen(port);
